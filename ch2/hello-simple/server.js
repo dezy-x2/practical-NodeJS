@@ -6,5 +6,5 @@ app.all("*", (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log("OPen at localhost:3000");
+    console.log("Open at localhost:3000");
 });
