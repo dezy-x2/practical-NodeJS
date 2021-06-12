@@ -1,0 +1,15 @@
+{
+  "name": "blog-example",
+  "version": "1.0.0",
+  "description": "learning how to create blog completely from scratch",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Desmond",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "pug": "^2.0.0-rc.4"
+  }
+}
