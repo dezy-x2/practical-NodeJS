@@ -3,6 +3,7 @@ const http = require("http");
 const path = require("path");
 
 let app = express();
+const server = http.createServer(app);
 
 app.set("appName", "hello-advanced");
 app.set("port", process.env.PORT || 3000);
@@ -16,7 +17,21 @@ app.all("*", (req, res) => {
     {msg: "Welcome to Practical Node.js!"});
 });
 
-http.createServer(app).listen(app.get("port"), () => {
-        console.log(`Express.js server is listening on port ${app.get("port")}`)
-    }
-);
+const boot = () => {
+    server.listen(app.get("port"), () => {
+        console.info(`Express server listening on port ${app.get("port")}`);
+    });
+};
+
+const shutdown = () => {
+    server.close();
+};
+
+if (require.main === module) {
+    boot();
+} else {
+    console.info("Running app as module");
+    exports.boot = boot;
+    exports.shutdown = shutdown;
+    exports.port = app.get("port");
+}
