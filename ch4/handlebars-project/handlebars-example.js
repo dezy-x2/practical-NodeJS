@@ -35,19 +35,20 @@ fs.readFile(filePath, "utf-8", (err, source) => {
         str += "</table>";
         return new handlebars.SafeString(str);
     });
-});
 
-handlebars.registerHelper("custom_title", title => {
-    let words = title.split(" ");
-    for (let i=0; i<words.length; i++) {
-        if (words[i].length > 4) {
-            words[i] = words[i][0].toUpperCase + words[i].substr(1);
+
+    handlebars.registerHelper("custom_title", title => {
+        let words = title.split(" ");
+        for (let i=0; i<words.length; i++) {
+            if (words[i].length > 4) {
+                words[i] = words[i][0].toUpperCase + words[i].substr(1);
+            };
         };
-    };
-    title = words.join(" ");
-    return title;
-});
+        title = words.join(" ");
+        return title;
+    });
 
-const template = handlebars.compile(source);
-const html = template(data);
-console.log(html);
+    const template = handlebars.compile(source);
+    const html = template(data);
+    console.log(html);
+});
