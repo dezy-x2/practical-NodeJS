@@ -12,8 +12,6 @@ let data = {
 
 data.body = process.argv[2];
 
-fs.readFile("pug-example.pug", "utf-8", (err, source) => {
-    let template = pug.compile(source);
-    let html = template(data);
+pug.renderFile("pug-example.pug", data, (err, html) => {
     console.log(html);
 });
